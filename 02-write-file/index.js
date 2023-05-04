@@ -1,7 +1,8 @@
 const { stdin, stdout } = process;
 const fs = require('fs');
+const path = require('path');
 
-const addFile = fs.WriteStream('text.txt');
+const addFile = fs.WriteStream(path.join(__dirname, "text.txt"));
 
 console.log('Hi, what you name?')
 
