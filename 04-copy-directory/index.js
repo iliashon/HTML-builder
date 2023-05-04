@@ -7,9 +7,8 @@ fs.mkdir(path.join(__dirname, "files-copy"), {recursive: true}, () => {
 
         files.forEach((file) => {
 
-            fs.copyFile(path.join(__dirname, "files", `${file.name}`), path.join(__dirname, "files-copy", `${file.name}`), COPYFILE_EXCL, () => {
-                console.log('complite')
-            })
+            fs.copyFile(path.join(__dirname, "files", `${file.name}`), path.join(__dirname, "files-copy", `${file.name}`), COPYFILE_EXCL, () => {})
         })
+        console.log("files copied");
     })
 })
