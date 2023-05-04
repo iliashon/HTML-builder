@@ -1,6 +1,16 @@
 const fs = require('fs');
-const { readdir } = require("fs/promises");
 const path = require("path");
 
-const files = await readdir(path.join(__dirname, 'secret-folder'), {withFileTypes: true});
-for (const file of files) console.log(file);
+fs.readdir(path.join(__dirname, "secret-folder"), {withFileTypes: true}, (err, files) => {
+
+    files.forEach((file) => {
+        if (file.isFile()) {
+            const ext = path.extname(file.name);
+            const name = path.basename(file.name, ext);
+
+            fs.stat(path.join(__dirname, "secret-folder", file.name), (er, result) => {
+                console.log(`${name} - ${ext.slice(1, ext.length)} - ${result.size / 1024}kb`);
+            })
+        }
+    })
+})
