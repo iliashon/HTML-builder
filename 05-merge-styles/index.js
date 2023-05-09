@@ -1,6 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 
+fs.mkdir(path.join(__dirname, "project-dist"), {recursive: true}, () => {})
+
 const addFileCss = fs.WriteStream(path.join(__dirname, "project-dist" , "bundle.css"));
 
 function readAndWriteFile (fileName) {
